@@ -1,0 +1,250 @@
+export interface Quote {
+  quote: string;
+  source: string;
+}
+
+export const quotes: Quote[] = [
+  {
+    quote: "A vingança nunca é plena, mata a alma e a envenena.",
+    source: "Seu Madruga",
+  },
+  {
+    quote:
+      "O sucesso é ir de fracasso em fracasso sem perder o entusiasmo.",
+    source: "Winston Churchill",
+  },
+  {
+    quote:
+      "A única forma de fazer um grande trabalho é amar o que você faz.",
+    source: "Steve Jobs",
+  },
+  {
+    quote:
+      "Não é o mais forte que sobrevive, nem o mais inteligente, mas o que melhor se adapta às mudanças.",
+    source: "Charles Darwin",
+  },
+  {
+    quote:
+      "Programas são como salsichas: é melhor não ver como são feitos.",
+    source: "Lei de Bismarck (adaptada)",
+  },
+  {
+    quote:
+      "Qualquer tolo pode escrever código que um computador entende. Bons programadores escrevem código que humanos entendem.",
+    source: "Martin Fowler",
+  },
+  {
+    quote:
+      "A simplicidade é o último grau da sofisticação.",
+    source: "Leonardo da Vinci",
+  },
+  {
+    quote:
+      "O conhecimento é o único bem que aumenta quando é compartilhado.",
+    source: "Provérbio",
+  },
+  {
+    quote:
+      "A persistência é o caminho do êxito.",
+    source: "Charles Chaplin",
+  },
+  {
+    quote:
+      "Primeiro resolva o problema. Depois, escreva o código.",
+    source: "John Johnson",
+  },
+  {
+    quote:
+      "A imaginação é mais importante que o conhecimento.",
+    source: "Albert Einstein",
+  },
+  {
+    quote:
+      "Existem duas tarefas difíceis na ciência da computação: invalidação de cache e nomear coisas.",
+    source: "Phil Karlton",
+  },
+  {
+    quote:
+      "Água mole em pedra dura, tanto bate até que fura.",
+    source: "Provérbio popular",
+  },
+  {
+    quote:
+      "O ótimo é inimigo do bom.",
+    source: "Voltaire",
+  },
+  {
+    quote:
+      "Nenhum grande sucesso foi alcançado sem antes passar por grandes fracassos.",
+    source: "Provérbio",
+  },
+  {
+    quote:
+      "A dívida técnica é como uma faca de dois gumes.",
+    source: "Provérbio da engenharia de software",
+  },
+  {
+    quote:
+      "Falhar é uma oportunidade para começar de novo, de forma mais inteligente.",
+    source: "Henry Ford",
+  },
+  {
+    quote:
+      "O código é como poesia: não basta funcionar, precisa ser elegante.",
+    source: "Provérbio da computação",
+  },
+  {
+    quote: "Plan to throw one away; you will, anyhow",
+    source: "The Mythical Man-Month",
+  },
+  {
+    quote:
+      "Nem todos os que vagam estão perdidos.",
+    source: "J.R.R. Tolkien",
+  },
+  {
+    quote:
+      "A melhor maneira de prever o futuro é criá-lo.",
+    source: "Peter Drucker",
+  },
+  {
+    quote:
+      "O silêncio é a linguagem mais poderosa. As vezes ele responde onde as palavras não alcançam.",
+    source: "Provérbio",
+  },
+  {
+    quote:
+      "Coragem não é a ausência do medo, mas a capacidade de seguir apesar dele.",
+    source: "Nelson Mandela",
+  },
+  {
+    quote:
+      "O tempo que você gosta de perder não é tempo perdido.",
+    source: "Bertrand Russell",
+  },
+  {
+    quote:
+      "Nada é permanente, exceto a mudança.",
+    source: "Heráclito",
+  },
+  {
+    quote:
+      "O impossível é só uma questão de opinião.",
+    source: "Paulo Coelho",
+  },
+  {
+    quote:
+      "Nem tudo que pode ser contado conta, e nem tudo que conta pode ser contado.",
+    source: "Albert Einstein",
+  },
+  {
+    quote:
+      "A vida é o que acontece enquanto você está ocupado fazendo outros planos.",
+    source: "John Lennon",
+  },
+  {
+    quote:
+      "Não há vento favorável para quem não sabe onde ir.",
+    source: "Sêneca",
+  },
+  {
+    quote:
+      "O aprendizado é um tesouro que acompanha seu dono para onde quer que vá.",
+    source: "Provérbio chinês",
+  },
+  {
+    quote:
+      "A liberdade verdadeira é poder dizer não.",
+    source: "Sartre",
+  },
+  {
+    quote:
+      "O olhar do outro é o espelho onde nos descobrimos.",
+    source: "Sartre",
+  },
+  {
+    quote:
+      "O difícil não é fazer o trabalho, é decidir por onde começar.",
+    source: "Provérbio",
+  },
+  {
+    quote:
+      "Mude antes que você seja forçado a mudar.",
+    source: "Jack Welch",
+  },
+  {
+    quote:
+      "A dúvida é o princípio da sabedoria.",
+    source: "Aristóteles",
+  },
+  {
+    quote:
+      "O essencial é invisível aos olhos.",
+    source: "Antoine de Saint-Exupéry",
+  },
+  {
+    quote:
+      "Nada é tão nosso quanto os nossos sonhos.",
+    source: "Friedrich Nietzsche",
+  },
+  {
+    quote:
+      "Documentação é como sexo: quando é boa, é ótima. Quando é ruim, ainda é melhor do que nada.",
+    source: "Provérbio da computação",
+  },
+  {
+    quote:
+      "Existem duas coisas infinitas: o universo e a estupidez humana. E não estou certo sobre o universo.",
+    source: "Albert Einstein",
+  },
+  {
+    quote:
+      "Não confie em código que você não escreveu. Não confie nem no que você escreveu.",
+    source: "Provérbio da computação",
+  },
+  {
+    quote:
+      "O computador nasceu para resolver problemas que antes não existiam.",
+    source: "Bill Gates",
+  },
+  {
+    quote:
+      "Só existem duas maneiras de escrever código sem erros: escrever código tão simples que obviamente não tem erros, ou ser tão complexo que não existem erros óbvios.",
+    source: "Tony Hoare",
+  },
+  {
+    quote:
+      "Deus está nos detalhes.",
+    source: "Mies van der Rohe",
+  },
+  {
+    quote:
+      "A pressa é inimiga da perfeição.",
+    source: "Provérbio popular",
+  },
+  {
+    quote:
+      "Quem não vive para servir, não serve para viver.",
+    source: "Madre Teresa de Calcutá",
+  },
+  {
+    quote:
+      "O conhecimento vos libertará.",
+    source: "Bíblia",
+  },
+  {
+    quote:
+      "O segredo da mudança é focar toda a sua energia não em lutar contra o velho, mas em construir o novo.",
+    source: "Sócrates",
+  },
+  {
+    quote:
+      "As pessoas esquecerão o que você disse, esquecerão o que você fez, mas nunca esquecerão como você as fez sentir.",
+    source: "Maya Angelou",
+  },
+  {
+    quote:
+      "A vida é uma peça de teatro que não permite ensaios.",
+    source: "Clarice Lispector",
+  },
+];

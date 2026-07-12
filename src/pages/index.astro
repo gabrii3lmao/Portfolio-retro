@@ -1,6 +1,7 @@
 ---
 import { getCollection } from "astro:content";
 import Section from "../components/common/Section.astro";
+import AboutSection from "../components/home/AboutSection.astro";
 import FeaturedArticles from "../components/home/FeaturedArticles.astro";
 import FeaturedProjects from "../components/home/FeaturedProjects.astro";
 import Hero from "../components/home/Hero.astro";
@@ -51,12 +52,15 @@ const featuredArticles = (
     {config.globalMeta.cardImage && (
       <meta name="twitter:image" content={config.globalMeta.cardImage} />
     )}
-    <meta http-equiv="content-language" content="en" />
-    <meta name="language" content="English" />
+    <meta http-equiv="content-language" content="pt-BR" />
+    <meta name="language" content="Português" />
     <link rel="canonical" href={config.site.baseUrl} />
   </Fragment>
-  <Section class="my-16">
+  <Section class="my-5">
     <Hero />
+  </Section>
+  <Section>
+    <AboutSection />
   </Section>
   <Section>
     <FeaturedProjects featuredProjects={featuredProjects} />

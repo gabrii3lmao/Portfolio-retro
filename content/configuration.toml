@@ -1,10 +1,10 @@
 [_.site]
-baseUrl = "http://localhost:4321"
+baseUrl = "https://gabrii3lportfolio.vercel.app"
 
 [_.globalMeta]
 title = "Gabriel Luz"
 description = "Desenvolvedor Backend especializado em Node.js e TypeScript."
-longDescription = "Portfólio de Gabriel Luz, estudante de Engenharia de Software e desenvolvedor backend focado em Node.js, NestJS, TypeScript e arquitetura de software"
+longDescription = "Desenvolvedor backend focado em Node.js e TypeScript, atualmente cursando Informática no Instituto Federal do Piauí. Trabalho com arquitetura de sistemas escaláveis, boas práticas de engenharia de software e estudo constantemente system design para construir aplicações robustas e bem estruturadas."
 cardImage = "/eu-normal.jpeg"
 keywords = ["backend", "nodejs", "typescript", "nestjs", "portfolio"]
 
@@ -12,21 +12,21 @@ keywords = ["backend", "nodejs", "typescript", "nestjs", "portfolio"]
 title = "Blog"
 description = "Artigos sobre desenvolvimento backend."
 longDescription = "Conteúdo sobre Node.js, Express, NestJS, TypeScript, arquitetura de software e boas práticas."
-cardImage = "/images/cover.webp"
+cardImage = "/eu-normal.jpeg"
 keywords = ["backend", "nodejs", "typescript"]
 
 [_.projectMeta]
 title = "Projetos"
 description = "Projetos pessoais e profissionais."
 longDescription = "Aplicações backend, APIs REST, SaaS e ferramentas desenvolvidas por Gabriel Luz."
-cardImage = "/images/cover.webp"
+cardImage = "/eu-normal.jpeg"
 keywords = ["portfolio", "backend", "projects"]
 
 [_.notFoundMeta]
 title = "404"
 description = "Página não encontrada."
 longDescription = "A página que você está procurando não existe."
-cardImage = "/images/cover.webp"
+cardImage = "/eu-normal.jpeg"
 
 [_.hero]
 title = "Gabriel Luz"

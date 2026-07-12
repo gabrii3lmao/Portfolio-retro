@@ -1,0 +1,39 @@
+---
+import { Icon } from "astro-icon/components";
+import { getConfigurationCollection } from "../../lib/utils";
+
+const { data: config } = await getConfigurationCollection();
+
+const skills: Array<{ name: string; icon: string }> = [
+  { name: "JavaScript", icon: "simple-icons:javascript" },
+  { name: "TypeScript", icon: "simple-icons:typescript" },
+  { name: "Node.js", icon: "simple-icons:nodedotjs" },
+  { name: "NestJS", icon: "simple-icons:nestjs" },
+  { name: "Express", icon: "simple-icons:express" },
+  { name: "Nuxt", icon: "simple-icons:nuxtdotjs" },
+  { name: "Vue.js", icon: "simple-icons:vuedotjs" },
+  { name: "Astro", icon: "simple-icons:astro" },
+  { name: "PostgreSQL", icon: "simple-icons:postgresql" },
+  { name: "MongoDB", icon: "simple-icons:mongodb" },
+  { name: "Prisma", icon: "simple-icons:prisma" },
+  { name: "Drizzle", icon: "simple-icons:drizzle" },
+  { name: "Redis", icon: "simple-icons:redis" },
+  { name: "Docker", icon: "simple-icons:docker" },
+  { name: "Git", icon: "simple-icons:git" },
+];
+---
+
+<div>
+  <p class="zag-text zag-transition leading-relaxed mb-8">
+    {config.globalMeta.longDescription}
+  </p>
+  <h3 class="font-display text-lg sm:text-xl leading-loose mb-4">Tecnologias</h3>
+  <div class="flex flex-wrap gap-2">
+    {skills.map((skill) => (
+      <span class="-zag-text -zag-bg zag-transition px-3 py-1.5 text-sm font-semibold flex items-center gap-1.5">
+        <Icon name={skill.icon} class="w-4 h-4" />
+        {skill.name}
+      </span>
+    ))}
+  </div>
+</div>
