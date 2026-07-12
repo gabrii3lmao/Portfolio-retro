@@ -10,7 +10,7 @@ const { data: config } = await getConfigurationCollection();
   <div
     class="zag-bg zag-transition sm:hidden relative z-50 py-4 flex items-center"
   >
-    <button class="px-4" type="button" aria-label="Toggle navigation menu">
+    <button class="px-4 min-h-11 min-w-11 flex items-center justify-center" type="button" aria-label="Toggle navigation menu">
       <svg
         xmlns="http://www.w3.org/2000/svg"
         width="32"
@@ -26,14 +26,14 @@ const { data: config } = await getConfigurationCollection();
   <div id="navOverlay" class="hidden sm:hidden fixed inset-0 bg-neutral-900/50 z-40"></div>
   <nav
     id="navMenu"
-    class="zag-bg zag-border-b zag-transition fixed sm:relative inset-x-0 top-0 h-auto sm:px-4 flex justify-between flex-col gap-8 py-4 text-xl sm:flex-row max-w-2xl mx-auto sm:pt-4 sm:border-none z-50"
+    class="zag-bg zag-border-b zag-transition fixed sm:relative inset-x-0 top-0 h-auto sm:px-4 flex justify-between flex-col gap-8 py-6 sm:py-4 text-xl sm:flex-row max-w-2xl mx-auto sm:pt-4 sm:border-none z-50"
   >
     <div
       class="flex flex-col font-mono font-medium gap-4 sm:flex-row px-4 sm:px-0 mt-16 sm:mt-0"
     >
       {
         Object.entries(config.menu).map((i) => (
-          <Anchor url={i[1]}>{i[0]}</Anchor>
+          <Anchor url={i[1]} class="py-2 sm:py-0 min-h-11 sm:min-h-0 flex items-center">{i[0]}</Anchor>
         ))
       }
     </div>
@@ -42,7 +42,7 @@ const { data: config } = await getConfigurationCollection();
         href="/Gabriel_Moura_Luz_Curriculo.pdf"
         download
         aria-label="Baixar currículo"
-        class="zag-fill zag-transition"
+        class="zag-fill zag-transition min-h-11 min-w-11 flex items-center justify-center"
       >
         <Icon name="simple-icons:readdotcv" class="w-8 h-8" />
       </a>

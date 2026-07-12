@@ -22,6 +22,3 @@ featured: true
 - Estruturei o backend seguindo o padrão de camadas (MSC) com validação rigorosa via Zod, garantindo integridade de dados e tipos consistentes em todo o ecossistema TypeScript.
 - Implementei mecanismos de resiliência e tratamento de falhas utilizando estratégias de Exponential Backoff e Retries via BullMQ para lidar com instabilidades em APIs externas.
 - Configurei pipeline de CI/CD com GitHub Actions, automatizando typecheck, testes unitários (194) e build, com deploy contínuo no Render apenas após validação completa.
-
-**Repositório:** https://github.com/gabrii3lmao/lmdi-api-backend
-**Site:** https://letmedoit.app.br

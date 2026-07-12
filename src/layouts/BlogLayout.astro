@@ -63,12 +63,12 @@ const { data: config } = await getConfigurationCollection();
       >
         {frontmatter.title}
       </h1>
-      <div class="flex justify-between">
+      <div class="flex flex-col sm:flex-row justify-between gap-1">
         <span>{articleDate}</span>
         <span>{frontmatter.readTime} min</span>
       </div>
     </div>
-    <Prose>
+    <Prose class="!font-serif">
       <slot />
     </Prose>
     <p class="pt-8">~{config.personal.name}</p>

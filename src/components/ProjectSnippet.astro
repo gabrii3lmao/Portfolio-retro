@@ -1,4 +1,5 @@
 ---
+import { Icon } from "astro-icon/components";
 import Anchor from "./common/Anchor.astro";
 
 export type Props = {
@@ -11,6 +12,24 @@ export type Props = {
 };
 
 const { title, description, url, githubUrl, liveUrl, tags } = Astro.props;
+
+const tagIcons: Record<string, string> = {
+  nodejs: "simple-icons:nodedotjs",
+  typescript: "simple-icons:typescript",
+  javascript: "simple-icons:javascript",
+  nestjs: "simple-icons:nestjs",
+  express: "simple-icons:express",
+  nuxt: "simple-icons:nuxtdotjs",
+  vue: "simple-icons:vuedotjs",
+  astro: "simple-icons:astro",
+  postgresql: "simple-icons:postgresql",
+  mongodb: "simple-icons:mongodb",
+  prisma: "simple-icons:prisma",
+  drizzle: "simple-icons:drizzle",
+  redis: "simple-icons:redis",
+  docker: "simple-icons:docker",
+  git: "simple-icons:git",
+};
 ---
 
 <div class="relative flex flex-col gap-3 mb-8 hover-zag-dotted-grid">
@@ -41,7 +60,10 @@ const { title, description, url, githubUrl, liveUrl, tags } = Astro.props;
   <div class="flex flex-row flex-wrap gap-2">
     {
       tags.map((tag) => (
-        <span class="-zag-text -zag-bg zag-transition px-2 py-1 text-sm font-semibold">
+        <span class="-zag-text -zag-bg zag-transition px-2 py-1 text-sm font-semibold flex items-center gap-1">
+          {tagIcons[tag.toLowerCase()] && (
+            <Icon name={tagIcons[tag.toLowerCase()]} class="w-3.5 h-3.5" />
+          )}
           {tag}
         </span>
       ))
