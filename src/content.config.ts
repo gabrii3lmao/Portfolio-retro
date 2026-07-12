@@ -9,7 +9,7 @@ import { parse as parseToml } from "toml";
  */
 const configuration = defineCollection({
   loader: file("content/configuration.toml", {
-    parser: (text) => JSON.parse(JSON.stringify(parseToml(text))),
+    parser: (text) => parseToml(text),
   }),
   schema: z.object({
     /**
@@ -46,7 +46,7 @@ const configuration = defineCollection({
       /**
        * The URL of the card image for social media sharing.
        */
-      cardImage: z.url().optional(),
+      cardImage: z.string().optional(),
 
       /**
        * Keywords for SEO, used in the `<meta name="keywords">` tag.
@@ -73,7 +73,7 @@ const configuration = defineCollection({
       /**
        * The URL of the card image for social media sharing.
        */
-      cardImage: z.url().optional(),
+      cardImage: z.string().optional(),
 
       /**
        * Keywords for SEO, used in the `<meta name="keywords">` tag.
@@ -103,7 +103,7 @@ const configuration = defineCollection({
       /**
        * The URL of the card image for social media sharing.
        */
-      cardImage: z.url().optional(),
+      cardImage: z.string().optional(),
 
       /**
        * Keywords for SEO, used in the `<meta name="keywords">` tag.
@@ -133,7 +133,7 @@ const configuration = defineCollection({
       /**
        * The URL of the card image for social media sharing.
        */
-      cardImage: z.url().optional(),
+      cardImage: z.string().optional(),
 
       /**
        * Keywords for SEO, used in the `<meta name="keywords">` tag.
@@ -158,7 +158,7 @@ const configuration = defineCollection({
       /**
        * The URL of the hero image, used as a background image in the hero section.
        */
-      image: z.url().optional(),
+      image: z.string().optional(),
 
       /**
        * The text displayed in the call-to-action button in the hero section.
@@ -183,17 +183,17 @@ const configuration = defineCollection({
       /**
        * The GitHub profile URL of the site owner or author.
        */
-      githubProfile: z.url().optional(),
+      githubProfile: z.string().optional(),
 
       /**
        * The Twitter profile URL of the site owner or author.
        */
-      twitterProfile: z.url().optional(),
+      twitterProfile: z.string().optional(),
 
       /**
        * The LinkedIn profile URL of the site owner or author.
        */
-      linkedinProfile: z.url().optional(),
+      linkedinProfile: z.string().optional(),
     }),
 
     /**
@@ -270,7 +270,7 @@ const blog = defineCollection({
       /**
        * The URL of the card image for social media sharing.
        */
-      cardImage: z.url().optional(),
+      cardImage: z.string().optional(),
 
       /**
        * The tags associated with the blog post, used for categorization and filtering.
@@ -338,7 +338,7 @@ const project = defineCollection({
       /**
        * The URL of the card image for social media sharing.
        */
-      cardImage: z.url().optional(),
+      cardImage: z.string().optional(),
 
       /**
        * The tags associated with the project, used for categorization and filtering.

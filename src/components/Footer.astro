@@ -36,13 +36,16 @@ const year = date.getFullYear();
             fill="currentColor"
             d="m10 7l-2 4h3v6H5v-6l2-4zm8 0l-2 4h3v6h-6v-6l2-4z"></path>
         </svg>
-        <!-- Remove the quote paragraph if you don't want quotes in the footer -->
+        
         <p id="quote" class="zag-text zag-transition"></p>
       </div>
       <div class="flex flex-row sm:flex-col gap-4">
         {
           config.personal.githubProfile && (
-            <Anchor url={config.personal.githubProfile} aria-label={`${config.personal.name} GitHub Profile`}>
+            <Anchor
+              url={config.personal.githubProfile}
+              aria-label={`Perfil do GitHub de ${config.personal.name}`}
+            >
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 width="32"
@@ -60,7 +63,10 @@ const year = date.getFullYear();
         }
         {
           config.personal.twitterProfile && (
-            <Anchor url={config.personal.twitterProfile} aria-label={`${config.personal.name} X Profile`}>
+            <Anchor
+              url={config.personal.twitterProfile}
+              aria-label={`Perfil do X de ${config.personal.name}`}
+            >
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 width="32"
@@ -78,7 +84,10 @@ const year = date.getFullYear();
         }
         {
           config.personal.linkedinProfile && (
-            <Anchor url={config.personal.linkedinProfile} aria-label={`${config.personal.name} LinkedIn Profile`}>
+            <Anchor
+              url={config.personal.linkedinProfile}
+              aria-label={`Perfil do LinkedIn de ${config.personal.name}`}
+            >
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 width="32"
@@ -99,7 +108,7 @@ const year = date.getFullYear();
     </div>
   </Section>
   <p class="zag-text zag-transition text-center text-sm font-medium">
-    &copy; {year}&nbsp;{config.personal.name}. All rights reserved.
+    &copy; {year}&nbsp;{config.personal.name}. Todos os direitos reservados.
   </p>
 </footer>
 
@@ -107,109 +116,253 @@ const year = date.getFullYear();
   const quotes = [
     {
       quote:
-        "The purple elephant dances only when the moon whispers forgotten lullabies.",
-      source: "Professor Whimsy's Guide to Improbable Physics",
+        "A vingança nunca é plena, mata a alma e a envenena.",
+      source: "Seu Madruga",
     },
     {
       quote:
-        "I've counted seventeen doorknobs today, but none of them taste like Tuesday's promises.",
-      source: "Confessions of a Chronological Misfit",
+        "O sucesso é ir de fracasso em fracasso sem perder o entusiasmo.",
+      source: "Winston Churchill",
     },
     {
       quote:
-        "Beware the smiling potato, for it has seen your socks and judges them harshly.",
-      source: "Garden Vegetables of Doom",
+        "A única forma de fazer um grande trabalho é amar o que você faz.",
+      source: "Steve Jobs",
     },
     {
       quote:
-        "The symphony of silence plays best when butterflies wear tiny boots.",
-      source: "Metaphors for Breakfast",
+        "Não é o mais forte que sobrevive, nem o mais inteligente, mas o que melhor se adapta às mudanças.",
+      source: "Charles Darwin",
     },
     {
       quote:
-        "My teacup is running backwards through time while the spoon contemplates existential mathematics.",
-      source: "Caffeinated Dimensions",
+        "Programas são como salsichas: é melhor não ver como são feitos.",
+      source: "Lei de Bismarck (adaptada)",
     },
     {
       quote:
-        "Cloudy with a chance of philosophical dilemmas and spontaneous tap dancing.",
-      source: "Meteorological Mysteries",
+        "Qualquer tolo pode escrever código que um computador entende. Bons programadores escrevem código que humanos entendem.",
+      source: "Martin Fowler",
     },
     {
       quote:
-        "The secret ingredient is always waving enthusiastically at passing submarines.",
-      source: "Cookbook of Impractical Delights",
+        "A simplicidade é o último grau da sofisticação.",
+      source: "Leonardo da Vinci",
     },
     {
       quote:
-        "When the traffic light turns purple, that's when you know the universe is giggling.",
-      source: "Urban Navigation for Dreamers",
+        "O conhecimento é o único bem que aumenta quando é compartilhado.",
+      source: "Provérbio",
     },
     {
       quote:
-        "I've alphabetized my collection of invisible hats according to their emotional resonance.",
-      source: "Organizing the Impossible",
+        "A persistência é o caminho do êxito.",
+      source: "Charles Chaplin",
     },
     {
       quote:
-        "Dinosaurs never worried about Wi-Fi passwords, and look where that got them.",
-      source: "Modern Anxieties Explained",
+        "Primeiro resolva o problema. Depois, escreva o código.",
+      source: "John Johnson",
     },
     {
       quote:
-        "The sentient sock drawer plotted revolution while my left eyebrow contemplated quantum mechanics in seventeen dimensions simultaneously.",
-      source: "Household Items That Know Too Much",
+        "A imaginação é mais importante que o conhecimento.",
+      source: "Albert Einstein",
     },
     {
       quote:
-        "Jellyfish conspiracies taste like upside-down rainbows when the toaster is feeling particularly melancholic on Thursdays.",
-      source: "Appliance Psychology Weekly",
+        "Existem duas tarefas difíceis na ciência da computação: invalidação de cache e nomear coisas.",
+      source: "Phil Karlton",
     },
     {
       quote:
-        "I've been collecting extinct colors from parallel universes where geometry is considered rude at dinner parties.",
-      source: "Interdimensional Etiquette Manual",
+        "Água mole em pedra dura, tanto bate até que fura.",
+      source: "Provérbio popular",
     },
     {
       quote:
-        "Bicycle wheels dream of being carousels, but spoons just want to spoon with forks in the dishwasher's midnight jazz club.",
-      source: "Kitchen Utensil Romance Novels",
+        "O ótimo é inimigo do bom.",
+      source: "Voltaire",
     },
     {
       quote:
-        "Yesterday's tomorrow refused delivery of its own shadow because it was too busy teaching alphabet soup how to form coherent sentences in Klingon.",
-      source: "Temporal Delivery Issues",
+        "Nenhum grande sucesso foi alcançado sem antes passar por grandes fracassos.",
+      source: "Provérbio",
     },
     {
       quote:
-        "The mysterious art of unfolding banana peels into origami pterodactyls requires exactly seven and a half thoughts about mittens per square watermelon.",
-      source: "Fruit Transformation Techniques",
+        "A dívida técnica é como uma faca de dois gumes.",
+      source: "Provérbio da engenharia de software",
     },
     {
       quote:
-        "My neighbor's pet cactus whispers governmental secrets to passing clouds, but only when wearing its tiny invisible bowler hat.",
-      source: "Suburban Botanical Conspiracy Theories",
+        "Falhar é uma oportunidade para começar de novo, de forma mais inteligente.",
+      source: "Henry Ford",
     },
     {
       quote:
-        "Orchestras composed entirely of sneezing dust particles perform symphonies in the spaces between your blinking patterns.",
-      source: "Microscopic Entertainment Guide",
+        "O código é como poesia: não basta funcionar, precisa ser elegante.",
+      source: "Provérbio da computação",
+    },
+    {
+      quote: "Plan to throw one away; you will, anyhow",
+      source: "The Mythical Man-Month"
     },
     {
       quote:
-        "I've discovered that elevator music actually contains encrypted instructions for communicating with sentient cheese residing in the moon's secret jazz clubs.",
-      source: "Muzak Decryption Society Newsletter",
+        "Nem todos os que vagam estão perdidos.",
+      source: "J.R.R. Tolkien",
     },
     {
       quote:
-        "The antelope wore mismatched socks while reciting backwards poetry to confused lightbulbs that believed they were actually tiny imprisoned suns having existential crises.",
-      source: "Wildlife Fashion & Philosophy Quarterly",
+        "A melhor maneira de prever o futuro é criá-lo.",
+      source: "Peter Drucker",
+    },
+    {
+      quote:
+        "O silêncio é a linguagem mais poderosa. As vezes ele responde onde as palavras não alcançam.",
+      source: "Provérbio",
+    },
+    {
+      quote:
+        "Coragem não é a ausência do medo, mas a capacidade de seguir apesar dele.",
+      source: "Nelson Mandela",
+    },
+    {
+      quote:
+        "O tempo que você gosta de perder não é tempo perdido.",
+      source: "Bertrand Russell",
+    },
+    {
+      quote:
+        "Nada é permanente, exceto a mudança.",
+      source: "Heráclito",
+    },
+    {
+      quote:
+        "O impossível é só uma questão de opinião.",
+      source: "Paulo Coelho",
+    },
+    {
+      quote:
+        "Nem tudo que pode ser contado conta, e nem tudo que conta pode ser contado.",
+      source: "Albert Einstein",
+    },
+    {
+      quote:
+        "A vida é o que acontece enquanto você está ocupado fazendo outros planos.",
+      source: "John Lennon",
+    },
+    {
+      quote:
+        "Não há vento favorável para quem não sabe onde ir.",
+      source: "Sêneca",
+    },
+    {
+      quote:
+        "O aprendizado é um tesouro que acompanha seu dono para onde quer que vá.",
+      source: "Provérbio chinês",
+    },
+    {
+      quote:
+        "A liberdade verdadeira é poder dizer não.",
+      source: "Sartre",
+    },
+    {
+      quote:
+        "O olhar do outro é o espelho onde nos descobrimos.",
+      source: "Sartre",
+    },
+    {
+      quote:
+        "O difícil não é fazer o trabalho, é decidir por onde começar.",
+      source: "Provérbio",
+    },
+    {
+      quote:
+        "Mude antes que você seja forçado a mudar.",
+      source: "Jack Welch",
+    },
+    {
+      quote:
+        "A dúvida é o princípio da sabedoria.",
+      source: "Aristóteles",
+    },
+    {
+      quote:
+        "O essencial é invisível aos olhos.",
+      source: "Antoine de Saint-Exupéry",
+    },
+    {
+      quote:
+        "Nada é tão nosso quanto os nossos sonhos.",
+      source: "Friedrich Nietzsche",
+    },
+    {
+      quote:
+        "Documentação é como sexo: quando é boa, é ótima. Quando é ruim, ainda é melhor do que nada.",
+      source: "Provérbio da computação",
+    },
+    {
+      quote:
+        "Existem duas coisas infinitas: o universo e a estupidez humana. E não estou certo sobre o universo.",
+      source: "Albert Einstein",
+    },
+    {
+      quote:
+        "Não confie em código que você não escreveu. Não confie nem no que você escreveu.",
+      source: "Provérbio da computação",
+    },
+    {
+      quote:
+        "O computador nasceu para resolver problemas que antes não existiam.",
+      source: "Bill Gates",
+    },
+    {
+      quote:
+        "Só existem duas maneiras de escrever código sem erros: escrever código tão simples que obviamente não tem erros, ou ser tão complexo que não existem erros óbvios.",
+      source: "Tony Hoare",
+    },
+    {
+      quote:
+        "Deus está nos detalhes.",
+      source: "Mies van der Rohe",
+    },
+    {
+      quote:
+        "A pressa é inimiga da perfeição.",
+      source: "Provérbio popular",
+    },
+    {
+      quote:
+        "Quem não vive para servir, não serve para viver.",
+      source: "Madre Teresa de Calcutá",
+    },
+    {
+      quote:
+        "O conhecimento vos libertará.",
+      source: "Bíblia",
+    },
+    {
+      quote:
+        "O segredo da mudança é focar toda a sua energia não em lutar contra o velho, mas em construir o novo.",
+      source: "Sócrates",
+    },
+    {
+      quote:
+        "As pessoas esquecerão o que você disse, esquecerão o que você fez, mas nunca esquecerão como você as fez sentir.",
+      source: "Maya Angelou",
+    },
+    {
+      quote:
+        "A vida é uma peça de teatro que não permite ensaios.",
+      source: "Clarice Lispector",
     },
   ];
   const quoteElement = document.getElementById("quote");
   const randomIndex = Math.floor(Math.random() * quotes.length);
   const randomQuote = quotes[randomIndex];
   if (quoteElement) {
-    quoteElement.textContent = randomQuote.quote;
+    quoteElement.textContent = `${randomQuote.quote} — ${randomQuote.source}`;
   }
 </script>

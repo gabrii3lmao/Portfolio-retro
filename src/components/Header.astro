@@ -18,7 +18,7 @@ const { data: config } = await getConfigurationCollection();
         viewBox="0 0 512 512"
         class="zag-fill zag-transition"
       >
-        <title>Navigation menu</title>
+        <title>Menu de navegação</title>
         <path d="M80 96h352v32H80zm0 144h352v32H80zm0 144h352v32H80z"></path>
       </svg>
     </button>
@@ -40,7 +40,7 @@ const { data: config } = await getConfigurationCollection();
         config.personal.githubProfile && (
           <Anchor
             url={config.personal.githubProfile}
-            aria-label={`${config.personal.name} GitHub Profile`}
+            aria-label={`Perfil do GitHub de ${config.personal.name}`}
           >
             <svg
               xmlns="http://www.w3.org/2000/svg"

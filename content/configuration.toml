@@ -1,57 +1,54 @@
-# Due to how Astro handles type inference with this structure,
-# we need to prefix all configuration keys with an underscore.
-
 [_.site]
-baseUrl = "http://zaggonaut.dev"
+baseUrl = "http://localhost:4321"
 
 [_.globalMeta]
-title = "Zaggonaut"
-description = "Retro-Inspired Theme & Built for Astro"
-longDescription = "Zaggonaut is a retro-inspired theme for Astro, built using TypeScript, TailwindCSS, and Astro."
-cardImage = "https://zaggonaut.dev/michael-dam-unsplash.webp"
-keywords = ["web development", "design", "technology"]
+title = "Gabriel Luz"
+description = "Desenvolvedor Backend especializado em Node.js e TypeScript."
+longDescription = "Portfólio de Gabriel Luz, estudante de Engenharia de Software e desenvolvedor backend focado em Node.js, NestJS, TypeScript e arquitetura de software"
+cardImage = "/eu-normal.jpeg"
+keywords = ["backend", "nodejs", "typescript", "nestjs", "portfolio"]
 
 [_.blogMeta]
-title = "Zaggonaut Blog"
-description = "Practical wisdom, unfiltered thoughts, and hot takes."
-longDescription = "Web development, tech trends, and the occasional programming mishap."
-cardImage = "https://zaggonaut.dev/michael-dam-unsplash.webp"
-keywords = ["web development", "design", "technology"]
+title = "Blog"
+description = "Artigos sobre desenvolvimento backend."
+longDescription = "Conteúdo sobre Node.js, Express, NestJS, TypeScript, arquitetura de software e boas práticas."
+cardImage = "/images/cover.webp"
+keywords = ["backend", "nodejs", "typescript"]
 
 [_.projectMeta]
-title = "Zaggonaut Projects"
-description = "A list of my web development projects and developer tools."
-longDescription = "All of my projects, including both frontend and full-stack applications."
-cardImage = "https://zaggonaut.dev/michael-dam-unsplash.webp"
-keywords = ["web development", "design", "technology"]
+title = "Projetos"
+description = "Projetos pessoais e profissionais."
+longDescription = "Aplicações backend, APIs REST, SaaS e ferramentas desenvolvidas por Gabriel Luz."
+cardImage = "/images/cover.webp"
+keywords = ["portfolio", "backend", "projects"]
 
 [_.notFoundMeta]
-title = "Zaggonaut 404"
-description = "The page you are looking for does not exist."
-longDescription = "The page you are looking for does not exist. Maybe it never existed. Spooky."
-cardImage = "https://zaggonaut.dev/michael-dam-unsplash.webp"
+title = "404"
+description = "Página não encontrada."
+longDescription = "A página que você está procurando não existe."
+cardImage = "/images/cover.webp"
 
 [_.hero]
-title = "Zaggonaut"
-subtitle = "Retro-Inspired Theme &<br />Built for Astro"
-image = "https://zaggonaut.dev/michael-dam-unsplash.webp"
-ctaText = "View Projects"
+title = "Gabriel Luz"
+subtitle = "Backend Developer"
+image = "/eu-pb2.jpeg"
+ctaText = "Ver Projetos"
 ctaUrl = "/projects"
 
 [_.personal]
-name = "Zaggonaut"
-githubProfile = "https://github.com/RATIU5/zaggonaut"
-twitterProfile = "https://twitter.com"
-linkedinProfile = "https://linkedin.com/"
+name = "Gabriel Luz"
+githubProfile = "https://github.com/gabrii3lmao"
+twitterProfile = ""
+linkedinProfile = "https://linkedin.com/in/gabrielmluz"
 
 [_.texts]
-articlesName = "Articles"
-projectsName = "Projects"
-viewAll = "View All"
-noArticles = "No articles found."
-noProjects = "No projects found."
+articlesName = "Artigos"
+projectsName = "Projetos"
+viewAll = "Ver todos"
+noArticles = "Nenhum artigo encontrado."
+noProjects = "Nenhum projeto encontrado."
 
 [_.menu]
 home = "/"
-projects = "/projects"
+projetos = "/projects"
 blog = "/blog"

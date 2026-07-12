@@ -45,6 +45,10 @@ export const getConfigurationCollection = async (): Promise<
       "Configuration file not found or multiple configuration files present.",
     );
   }
-  configCache = configs[0];
-  return configs[0];
+  const entry = configs[0];
+  // The TOML file wraps all keys under `_` to keep the file() loader
+  // from splitting them into separate entries. Unwrap it here.
+  entry.data = (entry.data as any)._ ?? entry.data;
+  configCache = entry;
+  return entry;
 };
