@@ -1,0 +1,17 @@
+export const tagIcons: Record<string, string> = {
+  nodejs: "simple-icons:nodedotjs",
+  typescript: "simple-icons:typescript",
+  javascript: "simple-icons:javascript",
+  nestjs: "simple-icons:nestjs",
+  express: "simple-icons:express",
+  nuxt: "simple-icons:nuxtdotjs",
+  vue: "simple-icons:vuedotjs",
+  astro: "simple-icons:astro",
+  postgresql: "simple-icons:postgresql",
+  mongodb: "simple-icons:mongodb",
+  prisma: "simple-icons:prisma",
+  drizzle: "simple-icons:drizzle",
+  redis: "simple-icons:redis",
+  docker: "simple-icons:docker",
+  git: "simple-icons:git",
+};

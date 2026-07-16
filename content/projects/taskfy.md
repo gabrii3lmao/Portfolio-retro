@@ -10,9 +10,6 @@ timestamp: 2026-06-01T02:39:03Z
 featured: true
 ---
 
-## Principais Projetos
-
-### TaskFy - Sistema de Gestão de Projetos
 **Node.js · TypeScript · Drizzle ORM · PostgreSQL · Vue 3**
 **2026**
 

@@ -1,5 +1,6 @@
 ---
 import { Icon } from "astro-icon/components";
+import { tagIcons } from "../lib/tagIcons";
 import Anchor from "../components/common/Anchor.astro";
 import Section from "../components/common/Section.astro";
 import Prose from "../components/Prose.astro";
@@ -11,24 +12,6 @@ type Props = { frontmatter: ProjectFrontmatter };
 
 const { frontmatter } = Astro.props;
 const { data: config } = await getConfigurationCollection();
-
-const tagIcons: Record<string, string> = {
-  nodejs: "simple-icons:nodedotjs",
-  typescript: "simple-icons:typescript",
-  javascript: "simple-icons:javascript",
-  nestjs: "simple-icons:nestjs",
-  express: "simple-icons:express",
-  nuxt: "simple-icons:nuxtdotjs",
-  vue: "simple-icons:vuedotjs",
-  astro: "simple-icons:astro",
-  postgresql: "simple-icons:postgresql",
-  mongodb: "simple-icons:mongodb",
-  prisma: "simple-icons:prisma",
-  drizzle: "simple-icons:drizzle",
-  redis: "simple-icons:redis",
-  docker: "simple-icons:docker",
-  git: "simple-icons:git",
-};
 ---
 
 <Layout>

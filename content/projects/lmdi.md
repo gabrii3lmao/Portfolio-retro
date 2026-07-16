@@ -10,9 +10,6 @@ timestamp: 2026-01-15T02:39:03Z
 featured: true
 ---
 
-## Principais Projetos
-
-### Let Me Do It - Correção de Gabaritos
 **Node.js · TypeScript · Vue · MongoDB · Redis · BullMQ**
 **2025 – 2026**
 
