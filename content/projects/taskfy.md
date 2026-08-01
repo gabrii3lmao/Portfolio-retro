@@ -6,7 +6,7 @@ longDescription: Ecossistema full-stack de gestão de projetos inspirado no Jira
 tags: ["nodejs", "typescript", "drizzle", "postgresql", "vue"]
 githubUrl: https://github.com/gabrii3lmao/TaskFy
 liveDemoUrl: https://taskfy-seven.vercel.app/
-timestamp: 2026-06-01T02:39:03Z
+timestamp: 2026-07-10T02:39:03Z
 featured: true
 ---
 

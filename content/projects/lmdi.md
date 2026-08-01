@@ -6,7 +6,7 @@ longDescription: Plataforma Full Stack para correção automatizada de exames ut
 tags: ["nodejs", "typescript", "vue", "mongodb", "redis", "bullmq"]
 githubUrl: https://github.com/gabrii3lmao/lmdi-backend
 liveDemoUrl: https://letmedoit.app.br
-timestamp: 2026-01-15T02:39:03Z
+timestamp: 2026-07-20T02:39:03Z
 featured: true
 ---
 

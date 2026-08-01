@@ -6,7 +6,7 @@ longDescription: "Ferramenta CLI para gerar boilerplates fullstack com arquitetu
 tags: ["nodejs", "typescript", "commander", "inquirer", "express", "vue", "react", "drizzle", "mongoose", "docker"]
 githubUrl: https://github.com/gabrii3lmao/Scaffoldify
 featured: true
-timestamp: 2026-06-15T02:39:03Z
+timestamp: 2026-07-05T02:39:03Z
 ---
 
 CLI interativa que gera boilerplates fullstack em segundos, com suporte a Vue 3 + Vite ou Next.js 15 no frontend e Express + TypeScript no backend.
