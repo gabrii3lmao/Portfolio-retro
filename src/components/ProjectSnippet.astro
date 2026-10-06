@@ -15,7 +15,7 @@ export type Props = {
 const { title, description, url, githubUrl, liveUrl, tags } = Astro.props;
 ---
 
-<div class="relative flex flex-col gap-3 mb-8 hover-zag-dotted-grid">
+<div class="relative flex flex-col gap-3 mb-15 hover-zag-dotted-grid">
   <div class="flex flex-col gap-3 sm:flex-row sm:justify-between">
     <Anchor url={url} class="text-xl">
       {title}
@@ -31,7 +31,7 @@ const { title, description, url, githubUrl, liveUrl, tags } = Astro.props;
       {
         liveUrl ? (
           <Anchor url={liveUrl} class="text-base" external>
-            Live
+            Site
           </Anchor>
         ) : null
       }

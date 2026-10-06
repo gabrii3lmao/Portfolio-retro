@@ -1,5 +1,4 @@
 ---
-import { Icon } from "astro-icon/components";
 import { getConfigurationCollection } from "../lib/utils";
 import Anchor from "./common/Anchor.astro";
 import ThemeToggle from "./ThemeToggle.astro";
@@ -40,12 +39,45 @@ const { data: config } = await getConfigurationCollection();
     <div class="flex gap-4 justify-between px-4 sm:px-0">
       <a
         href="/Gabriel_Moura_Luz_Curriculo.pdf"
-        download
-        aria-label="Baixar currículo"
-        class="zag-fill zag-transition min-h-11 min-w-11 flex items-center justify-center"
+        aria-label="Abrir currículo"
+        target="_blank"
+        class="zag-offset underline font-medium flex items-center gap-1 min-h-11 text-base sm:text-lg focus:outline-2 focus:outline-offset-2 focus:outline-zag-dark dark:focus:outline-zag-light"
       >
-        <Icon name="simple-icons:readdotcv" class="w-8 h-8" />
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="20"
+          height="20"
+          viewBox="0 0 24 24"
+          aria-hidden="true"
+          class="w-5 h-5 shrink-0 zag-fill zag-transition"
+        >
+          <path
+            d="M14 2H6c-1.1 0-1.99.9-1.99 2L4 20c0 1.1.89 2 1.99 2H18c1.1 0 2-.9 2-2V8l-6-6zm2 16H8v-2h8v2zm0-4H8v-2h8v2zm-3-5V3.5L18.5 9H13z"
+          ></path>
+        </svg>
+        Currículo
       </a>
+      {
+        config.personal.linkedinProfile && (
+          <Anchor
+            url={config.personal.linkedinProfile}
+            aria-label={`Perfil do LinkedIn de ${config.personal.name}`}
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="32"
+              height="32"
+              viewBox="0 0 24 24"
+            >
+              <title>LinkedIn</title>
+              <path
+                class="zag-fill zag-transition"
+                d="M19 0h-14c-2.76 0-5 2.24-5 5v14c0 2.76 2.24 5 5 5h14c2.76 0 5-2.24 5-5v-14c0-2.76-2.24-5-5-5zm-11.12 19h-3.08v-9h3.08v9zm-1.54-10.29c-.99 0-1.79-.8-1.79-1.79s.8-1.79 1.79-1.79 1.79.8 1.79 1.79-.8 1.79-1.79 1.79zm13.16 10.29h-3.08v-4.89c0-1.16-.02-2.64-1.61-2.64s-1.86 1.26-1.86 2.57v4.96h-3.08v-9h2.96v1.23h.04c.41-.78 1.4-1.6 2.88-1.6 3.08 0 3.65 2.03 3.65 4.66v4.71z"
+              />
+            </svg>
+          </Anchor>
+        )
+      }
       {
         config.personal.githubProfile && (
           <Anchor

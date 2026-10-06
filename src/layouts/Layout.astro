@@ -40,9 +40,9 @@ import "../styles/global.css";
     
     <slot name="head" />
   </head>
-  <body class="zag-bg zag-text zag-transition font-mono">
+  <body class="zag-bg zag-text zag-transition font-mono min-h-screen flex flex-col">
     <Header />
-    <main>
+    <main class="flex-1">
       <slot />
     </main>
     <Footer />
