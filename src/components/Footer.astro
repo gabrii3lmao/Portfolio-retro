@@ -1,9 +1,16 @@
 ---
+import { defaultLocale, t, type Locale } from "../lib/i18n";
 import { getConfigurationCollection } from "../lib/utils";
 import Anchor from "./common/Anchor.astro";
 import Section from "./common/Section.astro";
 
-const { data: config } = await getConfigurationCollection();
+type Props = {
+  /** The locale of the current page. */
+  locale?: Locale;
+};
+
+const { locale = defaultLocale } = Astro.props;
+const { data: config } = await getConfigurationCollection(locale);
 
 const date = new Date();
 const year = date.getFullYear();
@@ -44,7 +51,7 @@ const year = date.getFullYear();
           config.personal.githubProfile && (
             <Anchor
               url={config.personal.githubProfile}
-              aria-label={`Perfil do GitHub de ${config.personal.name}`}
+              aria-label={t(locale, "githubAria", { name: config.personal.name })}
             >
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -65,7 +72,7 @@ const year = date.getFullYear();
           config.personal.twitterProfile && (
             <Anchor
               url={config.personal.twitterProfile}
-              aria-label={`Perfil do X de ${config.personal.name}`}
+              aria-label={t(locale, "xAria", { name: config.personal.name })}
             >
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -86,7 +93,7 @@ const year = date.getFullYear();
           config.personal.linkedinProfile && (
             <Anchor
               url={config.personal.linkedinProfile}
-              aria-label={`Perfil do LinkedIn de ${config.personal.name}`}
+              aria-label={t(locale, "linkedinAria", { name: config.personal.name })}
             >
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -108,7 +115,7 @@ const year = date.getFullYear();
     </div>
   </Section>
   <p class="zag-text zag-transition text-center text-sm font-medium">
-    &copy; {year}&nbsp;{config.personal.name}. Todos os direitos reservados.
+    &copy; {year}&nbsp;{config.personal.name}. {t(locale, "rights")}
   </p>
 </footer>
 

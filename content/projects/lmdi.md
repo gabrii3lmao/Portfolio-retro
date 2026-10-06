@@ -1,6 +1,7 @@
 ---
 title: "Let Me Do It - Correção de Gabaritos"
 slug: lmdi
+locale: "pt"
 description: Plataforma Full Stack para correção automatizada de exames utilizando visão computacional com Google Gemini.
 longDescription: Plataforma Full Stack para correção automatizada de exames utilizando visão computacional com Google Gemini.
 tags: ["nodejs", "typescript", "vue", "mongodb", "redis", "bullmq"]

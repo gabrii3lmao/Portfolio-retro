@@ -1,59 +1,34 @@
 ---
 import Section from "../components/common/Section.astro";
+import Seo from "../components/common/Seo.astro";
 import Layout from "../layouts/Layout.astro";
+import { resolveHref, type Locale, t } from "../lib/i18n";
 import { getConfigurationCollection } from "../lib/utils";
 
-const { data: config } = await getConfigurationCollection();
+// The 404 page is shared by both locales, so the language is taken from the
+// requested URL (`/en/whatever` → English). It falls back to Portuguese.
+const locale: Locale = Astro.url.pathname.startsWith("/en") ? "en" : "pt";
+const { data: config } = await getConfigurationCollection(locale);
 ---
 
-<Layout>
+<Layout locale={locale}>
   <Fragment slot="head">
-    <title>{config.notFoundMeta.title}</title>
-    <meta
-      name="description"
-      content={config.notFoundMeta.longDescription ??
-        config.notFoundMeta.description}
+    <Seo
+      locale={locale}
+      baseUrl={config.site.baseUrl}
+      path="/"
+      meta={config.notFoundMeta}
     />
-    <meta property="og:title" content={config.notFoundMeta.title} />
-    <meta property="og:description" content={config.notFoundMeta.description} />
-    {
-      config.notFoundMeta.keywords && (
-        <meta
-          name="keywords"
-          content={config.notFoundMeta.keywords.join(", ")}
-        />
-      )
-    }
-    {
-      config.notFoundMeta.cardImage && (
-        <meta property="og:image" content={config.notFoundMeta.cardImage} />
-      )
-    }
-    <meta property="og:url" content={config.site.baseUrl} />
-    <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content={config.notFoundMeta.title} />
-    <meta
-      name="twitter:description"
-      content={config.notFoundMeta.description}
-    />
-    {
-      config.notFoundMeta.cardImage && (
-        <meta name="twitter:image" content={config.notFoundMeta.cardImage} />
-      )
-    }
-    <meta http-equiv="content-language" content="pt-BR" />
-    <meta name="language" content="Português" />
-    <link rel="canonical" href={config.site.baseUrl} />
   </Fragment>
   <Section class="mt-16">
     <h1 class="text-3xl sm:text-4xl font-display pb-8">
-      Bem, isso é constrangedor
+      {t(locale, "notFoundTitle")}
     </h1>
-    <h2 class="text-xl sm:text-2xl pb-8">404 - Página não encontrada</h2>
+    <h2 class="text-xl sm:text-2xl pb-8">{t(locale, "notFoundHeading")}</h2>
     <p>
-      Parece que esta página não existe. Se quiser voltar à segurança, <a
-        class="underline underline-offset-4 font-medium"
-        href="/">clique aqui para voltar ao início</a
+      {t(locale, "notFoundBeforeLink")}
+      <a class="underline underline-offset-4 font-medium" href={resolveHref("/", locale)}
+        >{t(locale, "notFoundLink")}</a
       >.
     </p>
   </Section>

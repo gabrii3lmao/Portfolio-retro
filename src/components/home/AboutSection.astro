@@ -1,8 +1,15 @@
 ---
 import { Icon } from "astro-icon/components";
+import { defaultLocale, t, type Locale } from "../../lib/i18n";
 import { getConfigurationCollection } from "../../lib/utils";
 
-const { data: config } = await getConfigurationCollection();
+type Props = {
+	/** The locale of the current page. */
+	locale?: Locale;
+};
+
+const { locale = defaultLocale } = Astro.props;
+const { data: config } = await getConfigurationCollection(locale);
 
 const skills: Array<{ name: string; icon: string }> = [
   { name: "JavaScript", icon: "simple-icons:javascript" },
@@ -27,7 +34,7 @@ const skills: Array<{ name: string; icon: string }> = [
   <p class="zag-text zag-transition leading-relaxed mb-8">
     {config.globalMeta.longDescription}
   </p>
-  <h3 class="font-display text-lg sm:text-xl leading-loose mb-4">Tecnologias</h3>
+  <h3 class="font-display text-lg sm:text-xl leading-loose mb-4">{t(locale, "technologies")}</h3>
   <div class="flex flex-wrap gap-2">
     {skills.map((skill) => (
       <span class="-zag-text -zag-bg zag-transition px-3 py-1.5 text-sm font-semibold flex items-center gap-1.5">

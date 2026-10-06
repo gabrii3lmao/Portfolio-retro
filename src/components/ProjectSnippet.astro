@@ -1,5 +1,6 @@
 ---
 import { Icon } from "astro-icon/components";
+import { defaultLocale, t, type Locale } from "../lib/i18n";
 import { tagIcons } from "../lib/tagIcons";
 import Anchor from "./common/Anchor.astro";
 
@@ -10,9 +11,19 @@ export type Props = {
 	githubUrl?: string;
 	liveUrl?: string;
 	tags: string[];
+	/** The locale of the current page. */
+	locale?: Locale;
 };
 
-const { title, description, url, githubUrl, liveUrl, tags } = Astro.props;
+const {
+	title,
+	description,
+	url,
+	githubUrl,
+	liveUrl,
+	tags,
+	locale = defaultLocale,
+} = Astro.props;
 ---
 
 <div class="relative flex flex-col gap-3 mb-15 hover-zag-dotted-grid">
@@ -31,7 +42,7 @@ const { title, description, url, githubUrl, liveUrl, tags } = Astro.props;
       {
         liveUrl ? (
           <Anchor url={liveUrl} class="text-base" external>
-            Site
+            {t(locale, "website")}
           </Anchor>
         ) : null
       }

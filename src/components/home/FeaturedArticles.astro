@@ -1,15 +1,18 @@
 ---
 import type { ArticleFrontmatter } from "../../lib/types";
+import { defaultLocale, type Locale } from "../../lib/i18n";
 import { getConfigurationCollection } from "../../lib/utils";
 import ArticleSnippet from "../ArticleSnippet.astro";
 import Anchor from "../common/Anchor.astro";
 
 type Props = {
 	featuredArticles: Array<ArticleFrontmatter>;
+	/** The locale of the current page. */
+	locale?: Locale;
 };
 
-const { featuredArticles } = Astro.props;
-const { data: config } = await getConfigurationCollection();
+const { featuredArticles, locale = defaultLocale } = Astro.props;
+const { data: config } = await getConfigurationCollection(locale);
 ---
 
 <div class="flex justify-between items-center w-full">
@@ -27,6 +30,7 @@ const { data: config } = await getConfigurationCollection();
             url={article.url}
             timestamp={article.timestamp}
             duration={`${article.readTime} min`}
+            locale={locale}
           />
         </li>
       ))

@@ -1,9 +1,10 @@
 ---
-import { getCollection, render } from "astro:content";
+import { render } from "astro:content";
 import ProjectLayout from "../../layouts/ProjectLayout.astro";
+import { getLocalizedEntries } from "../../lib/utils";
 
 export async function getStaticPaths() {
-	const projects = await getCollection("project");
+	const projects = await getLocalizedEntries("project", "pt");
 	return projects.map((project) => ({
 		params: { id: project.data.slug },
 		props: {
@@ -22,6 +23,6 @@ const { project } = Astro.props;
 const { Content } = await render(project);
 ---
 
-<ProjectLayout frontmatter={project.data}>
+<ProjectLayout frontmatter={project.data} locale="pt">
   <Content />
 </ProjectLayout>

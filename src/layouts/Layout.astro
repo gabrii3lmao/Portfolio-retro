@@ -1,11 +1,19 @@
 ---
 import Footer from "../components/Footer.astro";
 import Header from "../components/Header.astro";
+import { defaultLocale, htmlLang, type Locale } from "../lib/i18n";
 import "../styles/global.css";
+
+type Props = {
+  /** The locale of the page. Drives `<html lang>`, the header and the footer. */
+  locale?: Locale;
+};
+
+const { locale = defaultLocale } = Astro.props;
 ---
 
 <!doctype html>
-<html lang="pt-BR">
+<html lang={htmlLang[locale]}>
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -41,10 +49,10 @@ import "../styles/global.css";
     <slot name="head" />
   </head>
   <body class="zag-bg zag-text zag-transition font-mono min-h-screen flex flex-col">
-    <Header />
+    <Header locale={locale} />
     <main class="flex-1">
       <slot />
     </main>
-    <Footer />
+    <Footer locale={locale} />
   </body>
 </html>

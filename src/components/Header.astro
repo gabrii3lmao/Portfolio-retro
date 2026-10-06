@@ -1,9 +1,27 @@
 ---
+import {
+  defaultLocale,
+  htmlLang,
+  localizePath,
+  stripLocalePrefix,
+  t,
+  type Locale,
+} from "../lib/i18n";
 import { getConfigurationCollection } from "../lib/utils";
 import Anchor from "./common/Anchor.astro";
 import ThemeToggle from "./ThemeToggle.astro";
 
-const { data: config } = await getConfigurationCollection();
+type Props = {
+  /** The locale of the current page. */
+  locale?: Locale;
+};
+
+const { locale = defaultLocale } = Astro.props;
+const { data: config } = await getConfigurationCollection(locale);
+
+const otherLocale: Locale = locale === "pt" ? "en" : "pt";
+const basePath = stripLocalePrefix(Astro.url.pathname, locale);
+const switchHref = localizePath(basePath, otherLocale);
 ---
 <header class="zag-bg zag-border-b zag-transition sticky top-0 w-full z-10">
   <div
@@ -17,7 +35,7 @@ const { data: config } = await getConfigurationCollection();
         viewBox="0 0 512 512"
         class="zag-fill zag-transition"
       >
-        <title>Menu de navegação</title>
+        <title>{t(locale, "menuLabel")}</title>
         <path d="M80 96h352v32H80zm0 144h352v32H80zm0 144h352v32H80z"></path>
       </svg>
     </button>
@@ -39,7 +57,7 @@ const { data: config } = await getConfigurationCollection();
     <div class="flex gap-4 justify-between px-4 sm:px-0">
       <a
         href="/Gabriel_Moura_Luz_Curriculo.pdf"
-        aria-label="Abrir currículo"
+        aria-label={t(locale, "resumeAria")}
         target="_blank"
         class="zag-offset underline font-medium flex items-center gap-1 min-h-11 text-base sm:text-lg focus:outline-2 focus:outline-offset-2 focus:outline-zag-dark dark:focus:outline-zag-light"
       >
@@ -55,13 +73,13 @@ const { data: config } = await getConfigurationCollection();
             d="M14 2H6c-1.1 0-1.99.9-1.99 2L4 20c0 1.1.89 2 1.99 2H18c1.1 0 2-.9 2-2V8l-6-6zm2 16H8v-2h8v2zm0-4H8v-2h8v2zm-3-5V3.5L18.5 9H13z"
           ></path>
         </svg>
-        Currículo
+        {t(locale, "resume")}
       </a>
       {
         config.personal.linkedinProfile && (
           <Anchor
             url={config.personal.linkedinProfile}
-            aria-label={`Perfil do LinkedIn de ${config.personal.name}`}
+            aria-label={t(locale, "linkedinAria", { name: config.personal.name })}
           >
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -82,7 +100,7 @@ const { data: config } = await getConfigurationCollection();
         config.personal.githubProfile && (
           <Anchor
             url={config.personal.githubProfile}
-            aria-label={`Perfil do GitHub de ${config.personal.name}`}
+            aria-label={t(locale, "githubAria", { name: config.personal.name })}
           >
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -97,6 +115,15 @@ const { data: config } = await getConfigurationCollection();
           </Anchor>
         )
       }
+      <a
+        href={switchHref}
+        hreflang={htmlLang[otherLocale]}
+        lang={htmlLang[otherLocale]}
+        aria-label={t(locale, "switchLanguage")}
+        class="zag-offset underline font-medium flex items-center justify-center min-h-11 min-w-11 text-base sm:text-lg focus:outline-2 focus:outline-offset-2 focus:outline-zag-dark dark:focus:outline-zag-light"
+      >
+        {t(locale, "switchLanguageShort")}
+      </a>
       <ThemeToggle />
     </div>
   </nav>

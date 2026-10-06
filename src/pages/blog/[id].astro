@@ -1,11 +1,11 @@
 ---
-import { getCollection, render } from "astro:content";
+import { render } from "astro:content";
 import BlogLayout from "../../layouts/BlogLayout.astro";
-import { getConfigurationCollection } from "../../lib/utils";
+import { getConfigurationCollection, getLocalizedEntries } from "../../lib/utils";
 
 export async function getStaticPaths() {
-	const posts = await getCollection("blog");
-	const { data: config } = await getConfigurationCollection();
+	const posts = await getLocalizedEntries("blog", "pt");
+	const { data: config } = await getConfigurationCollection("pt");
 	return posts.map((article) => ({
 		params: { id: article.data.slug },
 		props: {
@@ -24,6 +24,6 @@ const { article } = Astro.props;
 const { Content } = await render(article);
 ---
 
-<BlogLayout frontmatter={article.data}>
+<BlogLayout frontmatter={article.data} locale="pt">
   <Content />
 </BlogLayout>

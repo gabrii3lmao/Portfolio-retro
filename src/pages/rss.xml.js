@@ -1,10 +1,11 @@
 import rss from "@astrojs/rss";
-import { getCollection } from "astro:content";
-import { getConfigurationCollection } from "../lib/utils";
+import { getConfigurationCollection, getLocalizedEntries } from "../lib/utils";
 
 export async function GET(context) {
   const { data: config } = await getConfigurationCollection();
-  const posts = await getCollection("blog");
+  // The feed stays in the default language: every entry appears once, even
+  // when an English translation exists.
+  const posts = await getLocalizedEntries("blog", "pt");
 
   return rss({
     title: `${config.personal.name} — Blog`,

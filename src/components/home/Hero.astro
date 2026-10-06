@@ -1,7 +1,14 @@
 ---
+import { defaultLocale, type Locale } from "../../lib/i18n";
 import { getConfigurationCollection } from "../../lib/utils";
 
-const { data: config } = await getConfigurationCollection();
+type Props = {
+	/** The locale of the current page. */
+	locale?: Locale;
+};
+
+const { locale = defaultLocale } = Astro.props;
+const { data: config } = await getConfigurationCollection(locale);
 ---
 
 <div class="flex flex-col items-center sm:flex-row gap-8">

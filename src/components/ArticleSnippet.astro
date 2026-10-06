@@ -1,4 +1,5 @@
 ---
+import { defaultLocale, type Locale } from "../lib/i18n";
 import { processArticleDate } from "../lib/utils";
 import Anchor from "./common/Anchor.astro";
 
@@ -8,9 +9,18 @@ export type Props = {
 	url: string;
 	duration?: string;
 	timestamp?: Date;
+	/** The locale of the current page. */
+	locale?: Locale;
 };
 
-const { title, description, url, duration, timestamp } = Astro.props;
+const {
+	title,
+	description,
+	url,
+	duration,
+	timestamp,
+	locale = defaultLocale,
+} = Astro.props;
 ---
 
 <div class="relative zag-text zag-transition flex flex-col gap-3 mb-8 hover-zag-dotted-grid">
@@ -23,7 +33,7 @@ const { title, description, url, duration, timestamp } = Astro.props;
   <div
     class="zag-muted zag-transition flex justify-between items-center"
   >
-    {timestamp ? <p>{processArticleDate(timestamp)}</p> : null}
+    {timestamp ? <p>{processArticleDate(timestamp, locale)}</p> : null}
     {duration ? <p>{duration}</p> : null}
   </div>
 </div>

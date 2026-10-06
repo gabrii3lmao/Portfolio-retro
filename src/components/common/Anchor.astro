@@ -1,4 +1,6 @@
 ---
+import { resolveHref, type Locale } from "../../lib/i18n";
+
 export type Props = {
 	url: string;
 	class?: string;
@@ -7,10 +9,15 @@ export type Props = {
 };
 
 const { url, external, class: className } = Astro.props;
+
+// `Astro.currentLocale` is derived from the URL (`/en/...` → `en`), so every
+// internal link automatically points to the page in the active language.
+const locale: Locale = Astro.currentLocale === "en" ? "en" : "pt";
+const href = external ? url : resolveHref(url, locale);
 ---
 
 <a
-  href={url}
+  href={href}
   class:list={[
     "zag-offset underline font-medium flex items-center focus:outline-2 focus:outline-offset-2 focus:outline-zag-dark dark:focus:outline-zag-light",
     className,

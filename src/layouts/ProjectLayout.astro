@@ -1,61 +1,34 @@
 ---
 import { Icon } from "astro-icon/components";
-import { tagIcons } from "../lib/tagIcons";
 import Anchor from "../components/common/Anchor.astro";
 import Section from "../components/common/Section.astro";
+import Seo from "../components/common/Seo.astro";
 import Prose from "../components/Prose.astro";
+import { defaultLocale, type Locale } from "../lib/i18n";
 import type { ProjectFrontmatter } from "../lib/types";
 import { getConfigurationCollection } from "../lib/utils";
+import { tagIcons } from "../lib/tagIcons";
 import Layout from "./Layout.astro";
 
-type Props = { frontmatter: ProjectFrontmatter };
+type Props = { frontmatter: ProjectFrontmatter; locale?: Locale };
 
-const { frontmatter } = Astro.props;
-const { data: config } = await getConfigurationCollection();
+const { frontmatter, locale = defaultLocale } = Astro.props;
+const { data: config } = await getConfigurationCollection(locale);
 ---
 
-<Layout>
+<Layout locale={locale}>
   <Fragment slot="head">
-    <title>{`${frontmatter.title} • ${config.personal.name}`}</title>
-    <meta
-      name="description"
-      content={frontmatter.longDescription ?? frontmatter.description}
-    />
-    <meta
-      property="og:title"
-      content={`${frontmatter.title} • ${config.personal.name}`}
-    />
-    <meta property="og:description" content={frontmatter.description} />
-    {
-      frontmatter.tags && (
-        <meta name="keywords" content={frontmatter.tags.join(", ")} />
-      )
-    }
-    {
-      frontmatter.cardImage && (
-        <meta property="og:image" content={frontmatter.cardImage} />
-      )
-    }
-    <meta
-      property="og:url"
-      content={`${config.site.baseUrl}/projects/${frontmatter.slug}`}
-    />
-    <meta name="twitter:card" content="summary_large_image" />
-    <meta
-      name="twitter:title"
-      content={`${frontmatter.title} • ${config.personal.name}`}
-    />
-    <meta name="twitter:description" content={frontmatter.description} />
-    {
-      frontmatter.cardImage && (
-        <meta name="twitter:image" content={frontmatter.cardImage} />
-      )
-    }
-    <meta http-equiv="content-language" content="pt-BR" />
-    <meta name="language" content="Português" />
-    <link
-      rel="canonical"
-      href={`${config.site.baseUrl}/projects/${frontmatter.slug}`}
+    <Seo
+      locale={locale}
+      baseUrl={config.site.baseUrl}
+      path={`/projects/${frontmatter.slug}`}
+      meta={{
+        title: `${frontmatter.title} • ${config.personal.name}`,
+        description: frontmatter.description,
+        longDescription: frontmatter.longDescription,
+        cardImage: frontmatter.cardImage,
+        keywords: frontmatter.tags,
+      }}
     />
   </Fragment>
   <Section class="mt-8">

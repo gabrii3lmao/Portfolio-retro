@@ -1,6 +1,7 @@
 ---
 title: "Express: tudo o que você precisa saber antes de criar seu servidor"
 slug: "express-tudo-o-que-você-precisa-saber-antes-de-criar-seu-servidor"
+locale: "pt"
 description: Um guia prático de arquitetura em camadas, TypeScript e boas práticas de desenvolvimento.
 longDescription: Um guia prático de arquitetura em camadas, TypeScript e boas práticas de desenvolvimento.
 cardImage: "https://miro.medium.com/v2/resize:fit:1100/format:webp/0*6h2nNbVtQ-xutr0q.png"

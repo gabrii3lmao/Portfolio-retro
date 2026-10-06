@@ -1,6 +1,7 @@
 ---
 title: "Ticket-Já API - Plataforma de Venda de Ingressos"
 slug: ticket-ja
+locale: "pt"
 description: API REST completa para venda de ingressos, cobrindo eventos, pontos de venda, categorias, pedidos, ingressos e pagamentos.
 longDescription: API REST completa para venda de ingressos, cobrindo eventos, pontos de venda, categorias, pedidos, ingressos e pagamentos com NestJS e arquitetura modular por domínio.
 tags: ["nodejs", "typescript", "nestjs", "prisma", "postgresql", "docker", "jwt", "swagger", "jest"]

@@ -1,15 +1,18 @@
 ---
 import type { ProjectFrontmatter } from "../../lib/types";
+import { defaultLocale, type Locale } from "../../lib/i18n";
 import { getConfigurationCollection } from "../../lib/utils";
 import Anchor from "../common/Anchor.astro";
 import ProjectSnippet from "../ProjectSnippet.astro";
 
 type Props = {
 	featuredProjects: Array<ProjectFrontmatter>;
+	/** The locale of the current page. */
+	locale?: Locale;
 };
 
-const { featuredProjects } = Astro.props;
-const { data: config } = await getConfigurationCollection();
+const { featuredProjects, locale = defaultLocale } = Astro.props;
+const { data: config } = await getConfigurationCollection(locale);
 ---
 
 <div class="flex justify-between items-center w-full">
@@ -28,6 +31,7 @@ const { data: config } = await getConfigurationCollection();
             githubUrl={project.githubUrl}
             liveUrl={project.liveDemoUrl}
             tags={project.tags ?? []}
+            locale={locale}
           />
         </li>
       ))

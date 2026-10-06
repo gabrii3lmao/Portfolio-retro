@@ -1,0 +1,31 @@
+---
+import { render } from "astro:content";
+import BlogLayout from "../../../layouts/BlogLayout.astro";
+import { getConfigurationCollection, getLocalizedEntries } from "../../../lib/utils";
+
+export async function getStaticPaths() {
+	// English routes mirror every Portuguese slug; missing translations fall
+	// back to the original entry instead of dropping the page.
+	const posts = await getLocalizedEntries("blog", "en");
+	const { data: config } = await getConfigurationCollection("en");
+	return posts.map((article) => ({
+		params: { id: article.data.slug },
+		props: {
+			article: {
+				...article,
+				data: {
+					...article.data,
+					url: `${config.site.baseUrl}/en/blog/${article.data.slug}`,
+				},
+			},
+		},
+	}));
+}
+
+const { article } = Astro.props;
+const { Content } = await render(article);
+---
+
+<BlogLayout frontmatter={article.data} locale="en">
+  <Content />
+</BlogLayout>

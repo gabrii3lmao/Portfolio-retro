@@ -1,0 +1,59 @@
+---
+import ArticleSnippet from "../ArticleSnippet.astro";
+import Section from "../common/Section.astro";
+import Seo from "../common/Seo.astro";
+import { defaultLocale, type Locale } from "../../lib/i18n";
+import { getConfigurationCollection, getLocalizedEntries } from "../../lib/utils";
+import Layout from "../../layouts/Layout.astro";
+
+type Props = {
+  /** The locale of the page rendering this view. */
+  locale?: Locale;
+};
+
+const { locale = defaultLocale } = Astro.props;
+const { data: config } = await getConfigurationCollection(locale);
+
+const articles = (await getLocalizedEntries("blog", locale)).sort(
+  (a, b) => b.data.timestamp.valueOf() - a.data.timestamp.valueOf(),
+);
+---
+
+<Layout locale={locale}>
+  <Fragment slot="head">
+    <Seo
+      locale={locale}
+      baseUrl={config.site.baseUrl}
+      path="/blog"
+      meta={config.blogMeta}
+    />
+  </Fragment>
+  <Section class="my-8">
+    <div class="flex items-center gap-4 pt-8 pb-16">
+      <h1 class="font-display text-3xl sm:text-4xl leading-loose">
+        {config.texts.articlesName}
+      </h1>
+    </div>
+    <ul>
+      {
+        articles.map((article) => (
+          <li>
+            <ArticleSnippet
+              title={article.data.title}
+              description={article.data.description}
+              duration={`${article.data.readTime} min`}
+              url={`/blog/${article.data.slug}`}
+              timestamp={article.data.timestamp}
+              locale={locale}
+            />
+          </li>
+        ))
+      }
+    </ul>
+    {
+      articles.length === 0 && (
+        <p class="zag-text zag-transition">{config.texts.noArticles}</p>
+      )
+    }
+  </Section>
+</Layout>

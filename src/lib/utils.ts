@@ -1,4 +1,5 @@
 import { type CollectionEntry, getCollection } from "astro:content";
+import { defaultLocale, type Locale } from "./i18n";
 
 /**
  * Shortens a string by removing words at the end until it fits within a certain length.
@@ -16,36 +17,79 @@ export const getShortDescription = (content: string, maxLength = 20) => {
 
 /**
  * Processes the date of an article and returns a string representing the processed date.
+ * The month name follows the active locale, the layout stays `MMM D, YYYY`.
  * @param timestamp the timestamp to process
+ * @param locale the active locale
  * @returns a string representing the processed timestamp
  */
-export const processArticleDate = (date: Date) => {
-  const monthSmall = date.toLocaleString("default", { month: "short" });
+export const processArticleDate = (
+  date: Date,
+  locale: Locale = defaultLocale,
+) => {
+  const tag = locale === "en" ? "en-US" : "pt-BR";
+  const monthSmall = date.toLocaleString(tag, { month: "short" });
   const day = date.getDate();
   const year = date.getFullYear();
   return `${monthSmall} ${day}, ${year}`;
 };
 
-let configCache: CollectionEntry<"configuration"> | null = null;
+const configCache = new Map<Locale, CollectionEntry<"configuration">>();
 
 /**
- * Retrieves the configuration collection entry from the content directory.
- * It checks if the configuration is already cached to avoid multiple reads.
- * There can only be one configuration file, so it throws an error if there are multiple or none.
- * @returns the configuration collection entry
+ * Retrieves the configuration entry for the given locale from the content directory.
+ * The configuration file holds one table per locale, so entries are keyed by locale
+ * (`pt`, `en`). Falls back to the default locale when a translation is missing.
+ * Results are cached per locale to avoid repeated reads.
+ * @param locale the active locale
  */
-export const getConfigurationCollection = async (): Promise<
-  CollectionEntry<"configuration">
-> => {
-  if (configCache) return configCache;
+export const getConfigurationCollection = async (
+  locale: Locale = defaultLocale,
+): Promise<CollectionEntry<"configuration">> => {
+  const cached = configCache.get(locale);
+  if (cached) return cached;
 
   const configs = await getCollection("configuration");
-  if (configs.length !== 1) {
+  const entry =
+    configs.find((candidate) => candidate.id === locale) ??
+    configs.find((candidate) => candidate.id === defaultLocale);
+
+  if (!entry) {
     throw new Error(
-      "Configuration file not found or multiple configuration files present.",
+      `Configuration file not found for locale "${locale}" (or for the default locale).`,
     );
   }
-  const entry = configs[0];
-  configCache = entry;
+
+  configCache.set(locale, entry);
   return entry;
+};
+
+/**
+ * Returns the content entries (blog posts or projects) rendered for a locale.
+ *
+ * Every entry of the default locale is always present: when the requested
+ * locale has no translation for a slug, the original entry is used as a
+ * fallback instead of leaving a hole in the listing.
+ *
+ * @param collection the content collection to read
+ * @param locale the active locale
+ */
+export const getLocalizedEntries = async <
+  C extends "blog" | "project",
+  L extends Locale = Locale,
+>(
+  collection: C,
+  locale: L,
+): Promise<CollectionEntry<C>[]> => {
+  const all = await getCollection(collection);
+  const base = all.filter((entry) => entry.data.locale === defaultLocale);
+
+  if (locale === defaultLocale) return base;
+
+  const translated = new Map(
+    all
+      .filter((entry) => entry.data.locale === locale)
+      .map((entry) => [entry.data.slug, entry]),
+  );
+
+  return base.map((entry) => translated.get(entry.data.slug) ?? entry);
 };

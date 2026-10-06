@@ -1,0 +1,55 @@
+---
+import Section from "../common/Section.astro";
+import Seo from "../common/Seo.astro";
+import AboutSection from "../home/AboutSection.astro";
+import FeaturedArticles from "../home/FeaturedArticles.astro";
+import FeaturedProjects from "../home/FeaturedProjects.astro";
+import Hero from "../home/Hero.astro";
+import { defaultLocale, type Locale } from "../../lib/i18n";
+import { getConfigurationCollection, getLocalizedEntries } from "../../lib/utils";
+import Layout from "../../layouts/Layout.astro";
+
+type Props = {
+  /** The locale of the page rendering this view. */
+  locale?: Locale;
+};
+
+const { locale = defaultLocale } = Astro.props;
+const { data: config } = await getConfigurationCollection(locale);
+
+const featuredProjects = (await getLocalizedEntries("project", locale))
+  .filter((entry) => entry.data.featured)
+  .map((entry) => ({
+    ...entry.data,
+    url: `/projects/${entry.data.slug}`,
+  }));
+const featuredArticles = (await getLocalizedEntries("blog", locale))
+  .filter((entry) => entry.data.featured)
+  .map((entry) => ({
+    ...entry.data,
+    url: `/blog/${entry.data.slug}`,
+  }));
+---
+
+<Layout locale={locale}>
+  <Fragment slot="head">
+    <Seo
+      locale={locale}
+      baseUrl={config.site.baseUrl}
+      path="/"
+      meta={config.globalMeta}
+    />
+  </Fragment>
+  <Section class="mt-12 mb-4">
+    <Hero locale={locale} />
+  </Section>
+  <Section class="mb-12">
+    <AboutSection locale={locale} />
+  </Section>
+  <Section class="mb-12">
+    <FeaturedProjects featuredProjects={featuredProjects} locale={locale} />
+  </Section>
+  <Section>
+    <FeaturedArticles featuredArticles={featuredArticles} locale={locale} />
+  </Section>
+</Layout>

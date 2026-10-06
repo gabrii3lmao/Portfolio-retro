@@ -1,0 +1,30 @@
+---
+import { render } from "astro:content";
+import ProjectLayout from "../../../layouts/ProjectLayout.astro";
+import { getLocalizedEntries } from "../../../lib/utils";
+
+export async function getStaticPaths() {
+	// English routes mirror every Portuguese slug; missing translations fall
+	// back to the original entry instead of dropping the page.
+	const projects = await getLocalizedEntries("project", "en");
+	return projects.map((project) => ({
+		params: { id: project.data.slug },
+		props: {
+			project: {
+				...project,
+				data: {
+					...project.data,
+					url: `/en/projects/${project.data.slug}`,
+				},
+			},
+		},
+	}));
+}
+
+const { project } = Astro.props;
+const { Content } = await render(project);
+---
+
+<ProjectLayout frontmatter={project.data} locale="en">
+  <Content />
+</ProjectLayout>

@@ -1,6 +1,7 @@
 ---
 title: "TaskFy - Sistema de Gestão de Projetos"
 slug: taskfy
+locale: "pt"
 description: Ecossistema full-stack de gestão de projetos inspirado no Jira com Time Tracking e RBAC.
 longDescription: Ecossistema full-stack de gestão de projetos inspirado no Jira com Time Tracking e RBAC.
 tags: ["nodejs", "typescript", "drizzle", "postgresql", "vue"]

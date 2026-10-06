@@ -5,7 +5,9 @@ import { parse as parseToml } from "toml";
 
 /**
  * Loader and schema for the configuration collection.
- * It loads a TOML file from the `content/configuration.toml` path and defines the schema for the configuration data.
+ * It loads `content/configuration.toml`, which holds one top-level table per
+ * locale (`[pt.*]`, `[en.*]`) — the file loader turns each table into its own
+ * entry, keyed by the locale.
  */
 const configuration = defineCollection({
   loader: file("content/configuration.toml", {
@@ -228,25 +230,42 @@ const configuration = defineCollection({
 
     /**
      * The menu configuration for the site.
-     * This defines the URLs for the main navigation links.
+     * Keys are the labels rendered in the navigation, values are the URLs.
+     * Each locale file provides its own labels (e.g. `projetos` / `projects`).
      */
-    menu: z.object({
-      home: z.string().default("/"),
-      projects: z.string().default("/projects"),
-      blog: z.string().default("/blog"),
-      /** Add other menu items here **/
-    }),
+    menu: z.record(z.string()),
   }),
 });
+
+/**
+ * Generates the id of an entry from its file path.
+ *
+ * The default id is the frontmatter `slug`, which would make the Portuguese
+ * and English versions of the same entry collide and overwrite each other —
+ * they intentionally share the same slug.
+ */
+const idFromFilePath = ({ entry }: { entry: string }): string =>
+  entry.replace(/\.md$/, "").replace(/\//g, "-");
 
 /**
  * Loader and schema for the blog collection.
  * It loads markdown files from the `content/blogs` directory and defines the schema for each blog post.
  */
 const blog = defineCollection({
-  loader: glob({ pattern: "**/*.md", base: "./content/blogs" }),
+  loader: glob({
+    pattern: "**/*.md",
+    base: "./content/blogs",
+    generateId: idFromFilePath,
+  }),
   schema: z
     .object({
+      /**
+       * The locale of this entry. Entries without an explicit locale belong to
+       * the site's default language (pt-BR). The English counterpart of an
+       * entry must reuse the same `slug`.
+       */
+      locale: z.enum(["pt", "en"]).default("pt"),
+
       /**
        * The title of the blog post.
        */
@@ -312,9 +331,20 @@ const blog = defineCollection({
  * It loads markdown files from the `content/projects` directory and defines the schema for each project.
  */
 const project = defineCollection({
-  loader: glob({ pattern: "**/*.md", base: "./content/projects" }),
+  loader: glob({
+    pattern: "**/*.md",
+    base: "./content/projects",
+    generateId: idFromFilePath,
+  }),
   schema: z
     .object({
+      /**
+       * The locale of this entry. Entries without an explicit locale belong to
+       * the site's default language (pt-BR). The English counterpart of an
+       * entry must reuse the same `slug`.
+       */
+      locale: z.enum(["pt", "en"]).default("pt"),
+
       /**
        * The title of the project.
        */

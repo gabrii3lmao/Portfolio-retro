@@ -1,53 +1,107 @@
-[_.site]
+[pt.site]
 baseUrl = "https://gabrii3lportfolio.vercel.app"
 
-[_.globalMeta]
+[pt.globalMeta]
 title = "Gabriel Luz"
 description = "Desenvolvedor Backend especializado em Node.js e TypeScript."
 longDescription = "Desenvolvedor backend focado em Node.js e TypeScript, atualmente cursando Informática no Instituto Federal do Piauí. Trabalho com arquitetura de sistemas escaláveis, boas práticas de engenharia de software e estudo constantemente system design para construir aplicações robustas e bem estruturadas."
 cardImage = "/eo.jpeg"
 keywords = ["backend", "nodejs", "typescript", "nestjs", "portfolio"]
 
-[_.blogMeta]
+[pt.blogMeta]
 title = "Blog"
 description = "Artigos sobre desenvolvimento backend."
 longDescription = "Conteúdo sobre Node.js, Express, NestJS, TypeScript, arquitetura de software e boas práticas."
 cardImage = "/eo.jpeg"
 keywords = ["backend", "nodejs", "typescript"]
 
-[_.projectMeta]
+[pt.projectMeta]
 title = "Projetos"
 description = "Projetos pessoais e profissionais."
 longDescription = "Aplicações backend, APIs REST, SaaS e ferramentas desenvolvidas por Gabriel Luz."
 cardImage = "/eo.jpeg"
 keywords = ["portfolio", "backend", "projects"]
 
-[_.notFoundMeta]
+[pt.notFoundMeta]
 title = "404"
 description = "Página não encontrada."
 longDescription = "A página que você está procurando não existe."
 cardImage = "/eo.jpeg"
 
-[_.hero]
+[pt.hero]
 title = "Gabriel Luz"
 subtitle = "Backend Developer"
 image = "/eo.jpeg"
 ctaText = "Ver Projetos"
 ctaUrl = "/projects"
 
-[_.personal]
+[pt.personal]
 name = "Gabriel Luz"
 githubProfile = "https://github.com/gabrii3lmao"
 linkedinProfile = "https://linkedin.com/in/gabrielmluz"
 
-[_.texts]
+[pt.texts]
 articlesName = "Artigos"
 projectsName = "Projetos"
 viewAll = "Ver todos"
 noArticles = "Nenhum artigo encontrado."
 noProjects = "Nenhum projeto encontrado."
 
-[_.menu]
-home = "/"
+[pt.menu]
+"início" = "/"
 projetos = "/projects"
+blog = "/blog"
+
+[en.site]
+baseUrl = "https://gabrii3lportfolio.vercel.app"
+
+[en.globalMeta]
+title = "Gabriel Luz"
+description = "Backend Developer specialized in Node.js and TypeScript."
+longDescription = "Backend developer focused on Node.js and TypeScript, currently studying Computer Science at Instituto Federal do Piauí. I work with scalable system architecture and software engineering best practices, and I constantly study system design to build robust, well-structured applications."
+cardImage = "/eo.jpeg"
+keywords = ["backend", "nodejs", "typescript", "nestjs", "portfolio"]
+
+[en.blogMeta]
+title = "Blog"
+description = "Articles about backend development."
+longDescription = "Content about Node.js, Express, NestJS, TypeScript, software architecture and best practices."
+cardImage = "/eo.jpeg"
+keywords = ["backend", "nodejs", "typescript"]
+
+[en.projectMeta]
+title = "Projects"
+description = "Personal and professional projects."
+longDescription = "Backend applications, REST APIs, SaaS and tools built by Gabriel Luz."
+cardImage = "/eo.jpeg"
+keywords = ["portfolio", "backend", "projects"]
+
+[en.notFoundMeta]
+title = "404"
+description = "Page not found."
+longDescription = "The page you are looking for does not exist."
+cardImage = "/eo.jpeg"
+
+[en.hero]
+title = "Gabriel Luz"
+subtitle = "Backend Developer"
+image = "/eo.jpeg"
+ctaText = "View Projects"
+ctaUrl = "/projects"
+
+[en.personal]
+name = "Gabriel Luz"
+githubProfile = "https://github.com/gabrii3lmao"
+linkedinProfile = "https://linkedin.com/in/gabrielmluz"
+
+[en.texts]
+articlesName = "Articles"
+projectsName = "Projects"
+viewAll = "View all"
+noArticles = "No articles found."
+noProjects = "No projects found."
+
+[en.menu]
+home = "/"
+projects = "/projects"
 blog = "/blog"
