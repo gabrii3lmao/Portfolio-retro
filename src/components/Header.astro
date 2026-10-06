@@ -27,7 +27,7 @@ const switchHref = localizePath(basePath, otherLocale);
   <div
     class="zag-bg zag-transition sm:hidden relative z-50 py-4 flex items-center"
   >
-    <button class="px-4 min-h-11 min-w-11 flex items-center justify-center" type="button" aria-label="Toggle navigation menu">
+    <button class="zag-underline-expand px-4 min-h-11 min-w-11 flex items-center justify-center" type="button" aria-label="Toggle navigation menu">
       <svg
         xmlns="http://www.w3.org/2000/svg"
         width="32"
@@ -43,23 +43,23 @@ const switchHref = localizePath(basePath, otherLocale);
   <div id="navOverlay" class="hidden sm:hidden fixed inset-0 bg-neutral-900/50 z-40"></div>
   <nav
     id="navMenu"
-    class="zag-bg zag-border-b zag-transition fixed sm:relative inset-x-0 top-0 h-auto sm:px-4 flex justify-between flex-col gap-8 py-6 sm:py-4 text-xl sm:flex-row max-w-2xl mx-auto sm:pt-4 sm:border-none z-50"
+    class="zag-bg zag-border-b zag-transition fixed sm:relative inset-x-0 top-0 h-auto flex justify-between flex-col gap-8 py-6 sm:py-4 text-xl sm:flex-row max-w-2xl mx-auto sm:pt-4 sm:border-none z-50"
   >
     <div
       class="flex flex-col font-mono font-medium gap-4 sm:flex-row px-4 sm:px-0 mt-16 sm:mt-0"
     >
       {
         Object.entries(config.menu).map((i) => (
-          <Anchor url={i[1]} class="py-2 sm:py-0 min-h-11 sm:min-h-0 flex items-center">{i[0]}</Anchor>
+          <Anchor url={i[1]} expandUnderline class="py-2 sm:py-0 min-h-11 sm:min-h-0 flex items-center">{i[0]}</Anchor>
         ))
       }
     </div>
-    <div class="flex gap-4 justify-between px-4 sm:px-0">
+    <div class="flex gap-4 justify-between px-4 sm:px-10">
       <a
-        href="/Gabriel_Moura_Luz_Curriculo.pdf"
+        href={locale === 'pt' ? "/Gabriel_Moura_Luz_Curriculo.pdf" : "Gabriel_Moura_Luz___CV.pdf"}
         aria-label={t(locale, "resumeAria")}
         target="_blank"
-        class="zag-offset underline font-medium flex items-center gap-1 min-h-11 text-base sm:text-lg focus:outline-2 focus:outline-offset-2 focus:outline-zag-dark dark:focus:outline-zag-light"
+        class="zag-underline-expand font-medium flex items-center gap-1 min-h-11 text-base sm:text-lg focus:outline-2 focus:outline-offset-2 focus:outline-zag-dark dark:focus:outline-zag-light"
       >
         <svg
           xmlns="http://www.w3.org/2000/svg"
@@ -80,6 +80,7 @@ const switchHref = localizePath(basePath, otherLocale);
           <Anchor
             url={config.personal.linkedinProfile}
             aria-label={t(locale, "linkedinAria", { name: config.personal.name })}
+            expandUnderline
           >
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -101,6 +102,7 @@ const switchHref = localizePath(basePath, otherLocale);
           <Anchor
             url={config.personal.githubProfile}
             aria-label={t(locale, "githubAria", { name: config.personal.name })}
+            expandUnderline
           >
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -120,7 +122,7 @@ const switchHref = localizePath(basePath, otherLocale);
         hreflang={htmlLang[otherLocale]}
         lang={htmlLang[otherLocale]}
         aria-label={t(locale, "switchLanguage")}
-        class="zag-offset underline font-medium flex items-center justify-center min-h-11 min-w-11 text-base sm:text-lg focus:outline-2 focus:outline-offset-2 focus:outline-zag-dark dark:focus:outline-zag-light"
+        class="zag-underline-expand font-medium flex items-center justify-center min-h-11 min-w-11 text-base sm:text-lg focus:outline-2 focus:outline-offset-2 focus:outline-zag-dark dark:focus:outline-zag-light"
       >
         {t(locale, "switchLanguageShort")}
       </a>

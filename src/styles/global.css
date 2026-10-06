@@ -145,6 +145,38 @@
     text-underline-offset: var(--zag-offset);
   }
 
+  /*
+   * Underline that expands from left to right while the element is hovered
+   * or focused from the keyboard. Used by every link and icon button in the
+   * header and footer.
+   */
+  .zag-underline-expand {
+    position: relative;
+
+    &::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      width: 100%;
+      height: var(--zag-stroke);
+      background-color: currentColor;
+      transform: scaleX(0);
+      transform-origin: left center;
+      pointer-events: none;
+
+      @media (prefers-reduced-motion: no-preference) {
+        transition: transform var(--zag-transition-duration)
+          var(--zag-transition-timing-function);
+      }
+    }
+
+    &:hover::after,
+    &:focus-visible::after {
+      transform: scaleX(1);
+    }
+  }
+
   .hover-zag-dotted-grid:hover::before {
     --dot-bg: var(--color-zag-light);
     --dot-color: var(--color-zag-dark-muted);

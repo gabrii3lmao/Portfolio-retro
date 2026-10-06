@@ -30,7 +30,7 @@ cardImage = "/eo.jpeg"
 
 [pt.hero]
 title = "Gabriel Luz"
-subtitle = "Backend Developer"
+subtitle = "Desenvolvedor Backend"
 image = "/eo.jpeg"
 ctaText = "Ver Projetos"
 ctaUrl = "/projects"
@@ -91,6 +91,7 @@ ctaUrl = "/projects"
 
 [en.personal]
 name = "Gabriel Luz"
+description = "Backend Developer" 
 githubProfile = "https://github.com/gabrii3lmao"
 linkedinProfile = "https://linkedin.com/in/gabrielmluz"
 

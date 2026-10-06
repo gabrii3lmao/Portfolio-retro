@@ -6,9 +6,15 @@ export type Props = {
 	class?: string;
 	external?: boolean;
 	"aria-label"?: string;
+	/**
+	 * Swaps the static underline for one that expands on hover/focus.
+	 * Used by the links in the header and footer.
+	 */
+	expandUnderline?: boolean;
 };
 
-const { url, external, class: className } = Astro.props;
+const { url, external, class: className, expandUnderline = false } =
+	Astro.props;
 
 // `Astro.currentLocale` is derived from the URL (`/en/...` → `en`), so every
 // internal link automatically points to the page in the active language.
@@ -19,7 +25,8 @@ const href = external ? url : resolveHref(url, locale);
 <a
   href={href}
   class:list={[
-    "zag-offset underline font-medium flex items-center focus:outline-2 focus:outline-offset-2 focus:outline-zag-dark dark:focus:outline-zag-light",
+    "zag-offset font-medium flex items-center focus:outline-2 focus:outline-offset-2 focus:outline-zag-dark dark:focus:outline-zag-light",
+    expandUnderline ? "zag-underline-expand" : "underline",
     className,
   ]}
   target={external ? "_blank" : "_self"}

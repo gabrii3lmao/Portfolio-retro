@@ -25,7 +25,7 @@ const year = date.getFullYear();
         {
           Object.entries(config.menu).map((i) => (
             <li>
-              <Anchor url={i[1]}>{i[0]}</Anchor>
+              <Anchor url={i[1]} expandUnderline>{i[0]}</Anchor>
             </li>
           ))
         }
@@ -52,6 +52,7 @@ const year = date.getFullYear();
             <Anchor
               url={config.personal.githubProfile}
               aria-label={t(locale, "githubAria", { name: config.personal.name })}
+              expandUnderline
             >
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -73,6 +74,7 @@ const year = date.getFullYear();
             <Anchor
               url={config.personal.twitterProfile}
               aria-label={t(locale, "xAria", { name: config.personal.name })}
+              expandUnderline
             >
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -94,6 +96,7 @@ const year = date.getFullYear();
             <Anchor
               url={config.personal.linkedinProfile}
               aria-label={t(locale, "linkedinAria", { name: config.personal.name })}
+              expandUnderline
             >
               <svg
                 xmlns="http://www.w3.org/2000/svg"
